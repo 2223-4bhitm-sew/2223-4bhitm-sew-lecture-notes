@@ -7,7 +7,7 @@ Beitrag: Peter Klose & Thomas Spindler
 
 === Grundproblem
 
-Wir haben mehrere verschiedene Computer, die alle mit unterschiedlicher Hard- und Software arbeiten. Damit diese problemlos miteinander kommunizieren können, gibt es Protokolle. REST ist eines vieler verschiedener Protokollen, die Dieses Problem lösen.
+Wir haben mehrere verschiedene Computer, die alle mit unterschiedlicher Hard- und Software arbeiten. Damit diese problemlos miteinander kommunizieren können, gibt es Protokolle. REST ist eines vieler verschiedener Protokollen, die dieses Problem lösen.
 
 image::2022-09-26-rest-architecture.png[]
 
@@ -19,7 +19,7 @@ Rest wir verwendet, um Daten zwischen zwei Systemen auszutauschen. Hierbei verwe
 
 Der Client holt sich die Informationen, die dieser Benötigt vom Server, oder sagt dem Server, dass er Informationen löschen oder speichern soll.
 
-==== Methoden von REST
+==== Methoden von REST [[rest_methoden]]
 
 Rest hat verschiedene Methoden, die sich an CRUD orientieren. +
 
@@ -136,3 +136,39 @@ image::2022-09-26-server-logic.png[]
 Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher, moderner und vernünftiger als z.B. Java FX.
 
 Daher ist es ebenfalls besonders wichtig, die Daten, die der Client mit einem POST request übermittelt, am Server zu überprüfen, bevor diese gespeichert werden
+
+== 2022-10-03 REST, REST in Quarkus
+Beitrag: Peter Klose & Thomas Spindler
+
+=== Rest
+
+Rest ist *Zustandslos*, das heißt, dass es grundsätzlich keine Sessions gibt. Dies bedeutet aber auch, dass Anmeldeinformationen, oder weitere Tokens und Cookies bei jeder Anfrage erneut gesendet werden müssen.
+
+==== Rest Request
+
+Ein Rest-Request ist, wenn der Client etwas vom Server anfordert. Dies muss den <<rest_methoden, REST Methoden>> entsprechen.
+
+===== Beispiel GET
+
+image::2022-10-03-rest-request.png[]
+
+===== Beispiel POST
+
+image::2022-10-03-rest-post-request.png[]
+
+==== Rest Begriffe
+
+[cols="a,a", frame=none, grid=none]
+|===
+|
+* Safety: Daten werden nicht verändert
+* Idempotence: Die Ressource behält auch nach mehrmaligen Aufruf den gleichen Zustand
+
+
+| image::2022-10-03-rest-begriffe.png[]
+
+|===
+
+=== Restfull API
+
+//TODO: (Peter) add information here
