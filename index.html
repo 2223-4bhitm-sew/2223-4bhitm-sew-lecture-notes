@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <link rel="icon" type="image/png" href="themes/favicon.png">
 <title>Lecture Notes 22/23 - 4bhitm - SEW</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -194,7 +194,8 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
 details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
 details{margin-left:1.25rem}
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
 details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
 details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
 details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
@@ -236,9 +237,8 @@ pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
 table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
 table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
 table.linenotable td.code{padding-left:.75em}
-table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
-pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
-pre.pygments .lineno::before{content:"";margin-right:-.125em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 .quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
 .quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
@@ -275,7 +275,7 @@ table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-c
 table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
 table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
 table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
 th.halign-left,td.halign-left{text-align:left}
 th.halign-right,td.halign-right{text-align:right}
 th.halign-center,td.halign-center{text-align:center}
@@ -291,10 +291,11 @@ ol{margin-left:1.75em}
 ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
-ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
 ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
 ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
 ul.checklist>li>p:first-child{margin-left:-1em}
 ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
 ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
@@ -337,8 +338,6 @@ sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
-.gist .file-data>table td.line-data{width:99%}
 div.unbreakable{page-break-inside:avoid}
 .big{font-size:larger}
 .small{font-size:smaller}
@@ -438,6 +437,221 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -445,21 +659,236 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_2022_09_19">1. 2022-09-19</a></li>
+<li><a href="#_2022_09_26_rest">1. 2022-09-26 REST</a>
+<ul class="sectlevel2">
+<li><a href="#_grundproblem">1.1. Grundproblem</a></li>
+<li><a href="#_rest">1.2. REST</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_2022_09_19"><a class="anchor" href="#_2022_09_19"></a>1. 2022-09-19</h2>
+<h2 id="_2022_09_26_rest"><a class="anchor" href="#_2022_09_26_rest"></a>1. 2022-09-26 REST</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Beitrag: Peter Klose &amp; Thomas Spindler</p>
+</div>
+<div class="sect2">
+<h3 id="_grundproblem"><a class="anchor" href="#_grundproblem"></a>1.1. Grundproblem</h3>
+<div class="paragraph">
+<p>Wir haben mehrere verschiedene Computer, die alle mit unterschiedlicher Hard- und Software arbeiten. Damit diese problemlos miteinander kommunizieren können, gibt es Protokolle. REST ist eines vieler verschiedener Protokollen, die Dieses Problem lösen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/2022-09-26-rest-architecture.png" alt="2022 09 26 rest architecture">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rest"><a class="anchor" href="#_rest"></a>1.2. REST</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+"HTML ist das Internet der Menschen, Rest ist das Internet für Maschinen"
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Rest wir verwendet, um Daten zwischen zwei Systemen auszutauschen. Hierbei verwendet an die typische Client - Server configuration</p>
+</div>
+<div class="paragraph">
+<p>Der Client holt sich die Informationen, die dieser Benötigt vom Server, oder sagt dem Server, dass er Informationen löschen oder speichern soll.</p>
+</div>
+<div class="sect3">
+<h4 id="_methoden_von_rest"><a class="anchor" href="#_methoden_von_rest"></a>1.2.1. Methoden von REST</h4>
+<div class="paragraph">
+<p>Rest hat verschiedene Methoden, die verwendet werden können:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GET (lesen)</p>
+</li>
+<li>
+<p>POST (speichern)</p>
+</li>
+<li>
+<p>PATCH (nur selten verwendet)</p>
+</li>
+<li>
+<p>DELETE (löschen)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Es gibt noch weitere Methoden, wie z.B OPTIONS.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_url"><a class="anchor" href="#_url"></a>1.2.2. URL</h4>
+<div class="paragraph">
+<p>Um die richtigen Resource vom Server zu bekommen, wird eine URL verwendet.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+URL  = Unified Resource Locator
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Wie der Name schon sagt, dient eine URL dazu, dass sie den Pfad der Resource angibt. Dies ist vergleichbar mit Dateipfaden.</p>
+</div>
+<details>
+<summary class="title">Beispiele für URLs</summary>
+<div class="content">
+<div class="paragraph">
+<p>Schema einer URL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>URI = scheme ":" ["//" authority] path ["?" query] ["#" fragment]
 
+authority = [userinfo "@"] host [":" port]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Beispiele:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>https://www.example.com/index.html
+
+https://www.example.com/person?vname="hans"&amp;nname="muster"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Beim zweitem Beispiel werden 2 weitere Parameter mitgegeben.<br>
+nname = hans<br>
+vanme = muster<br>
+Diese sind einfache Variablen mit Werten.</p>
+</div>
+</div>
+</details>
+</div>
+<div class="sect3">
+<h4 id="_json"><a class="anchor" href="#_json"></a>1.2.3. JSON</h4>
+<div class="paragraph">
+<p>REST verwendet als unterliegendes Protokoll HTTP. Die Daten an sich werden allerdings im JSON format transportiert.</p>
+</div>
+<div class="paragraph">
+<p>Früher wurde oft XML für den Datentransfer verwendet (vor REST). XML hat allerdings einige Nachteile gegenüber dem neueren JSON. Aus diesem Grund verwendet REST JSON.</p>
+</div>
+<details>
+<summary class="title">XML vs JSON</summary>
+<div class="content">
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>XML</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="nt">&lt;schueler&gt;</span>
+    <span class="nt">&lt;vorname&gt;</span>Max<span class="nt">&lt;/vorname&gt;</span>
+    <span class="nt">&lt;nachname&gt;</span>Muster<span class="nt">&lt;/nachname&gt;</span>
+    <span class="nt">&lt;geburtsdatum&gt;</span>05.07.2002<span class="nt">&lt;/geburtsdatum&gt;</span>
+    <span class="nt">&lt;klasse&gt;</span>4BHITM<span class="nt">&lt;/klasse&gt;</span>
+<span class="nt">&lt;/schueler&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Zeichen: <strong>187</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>JSON</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"schueler"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"vorname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nachname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Muster"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"geburtsdatum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05.07.2022"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"klasse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4BHITM"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Zeichen: <strong>121</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>JSON ist hier effizienter, da es weniger Zeichen als XML hat.</p>
+</div>
+<div class="paragraph">
+<p>Ebenfalls ist JSON meistens einfacher zu lesen als XML.</p>
+</div>
+</div>
+</details>
+</div>
+<div class="sect3">
+<h4 id="_endpoint"><a class="anchor" href="#_endpoint"></a>1.2.4. Endpoint</h4>
+<div class="paragraph">
+<p>Ein Endpoint ist eine Schnittstelle für die Daten.</p>
+</div>
+<div class="paragraph">
+<p>Jeder Endpoint hat eine URL und eine Methode, die dieser verwendet.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/2022-09-26-rest-examples.png" alt="2022 09 26 rest examples">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_server_architektur"><a class="anchor" href="#_server_architektur"></a>1.2.5. Server Architektur</h4>
+<div class="paragraph">
+<p>Auf dem Server werden die Anfragen entgegengenommen und verarbeitet. Hierbei kann der Server weitere Verbindungen aufbauen (Datenbank, weitere REST requests, ..), oder Berechnungen durchführen.</p>
+</div>
+<div class="paragraph">
+<p>Dieser ist mit folgender Architektur aufgebaut:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/2022-09-26-server-logic.png" alt="2022 09 26 server logic">
+</div>
+</div>
+<div class="paragraph">
+<p>Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher moderner und vernünftiger als z.B. Java FX.</p>
+</div>
+<div class="paragraph">
+<p>Daher ist es ebenfalls besonders wichtig, die Daten, die der Client mit einem POST request übermittelt, am Server zu überprüfen, bevor diese gespeichert werden</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-09-18 20:01:34 UTC
+Last updated 2022-10-03 12:10:26 UTC
 </div>
 </div>
 </body>
