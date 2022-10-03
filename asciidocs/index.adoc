@@ -1,4 +1,135 @@
 = Lecture Notes 22/23 - 4bhitm - SEW
+:toc: left
 ifndef::imagesdir[:imagesdir: images]
 
-== 2022-09-19
+== 2022-09-26 REST
+Beitrag: Peter Klose & Thomas Spindler
+
+=== Grundproblem
+
+Wir haben mehrere verschiedene Computer, die alle mit unterschiedlicher Hard- und Software arbeiten. Damit diese problemlos miteinander kommunizieren können, gibt es Protokolle. REST ist eines vieler verschiedener Protokollen, die Dieses Problem lösen.
+
+image::2022-09-26-rest-architecture.png[]
+
+=== REST
+
+IMPORTANT: "HTML ist das Internet der Menschen, Rest ist das Internet für Maschinen"
+
+Rest wir verwendet, um Daten zwischen zwei Systemen auszutauschen. Hierbei verwendet an die typische Client - Server configuration
+
+Der Client holt sich die Informationen, die dieser Benötigt vom Server, oder sagt dem Server, dass er Informationen löschen oder speichern soll.
+
+==== Methoden von REST
+
+Rest hat verschiedene Methoden, die verwendet werden können:
+
+* GET (lesen)
+* POST (speichern)
+* PATCH (nur selten verwendet)
+* DELETE (löschen)
+
+Es gibt noch weitere Methoden, wie z.B OPTIONS.
+
+==== URL
+
+Um die richtigen Resource vom Server zu bekommen, wird eine URL verwendet.
+
+TIP: URL  = Unified Resource Locator
+
+Wie der Name schon sagt, dient eine URL dazu, dass sie den Pfad der Resource angibt. Dies ist vergleichbar mit Dateipfaden.
+
+.Beispiele für URLs
+[%collapsible]
+====
+
+Schema einer URL:
+
+----
+URI = scheme ":" ["//" authority] path ["?" query] ["#" fragment]
+
+authority = [userinfo "@"] host [":" port]
+----
+
+Beispiele:
+
+----
+https://www.example.com/index.html
+
+https://www.example.com/person?vname="hans"&nname="muster"
+----
+
+Beim zweitem Beispiel werden 2 weitere Parameter mitgegeben. +
+nname = hans +
+vanme = muster +
+Diese sind einfache Variablen mit Werten.
+
+====
+
+==== JSON
+
+REST verwendet als unterliegendes Protokoll HTTP. Die Daten an sich werden allerdings im JSON format transportiert.
+
+Früher wurde oft XML für den Datentransfer verwendet (vor REST). XML hat allerdings einige Nachteile gegenüber dem neueren JSON. Aus diesem Grund verwendet REST JSON.
+
+.XML vs JSON
+[%collapsible]
+====
+
+[cols="a,a", frame=none, grid=none]
+|===
+| XML
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8" ?>
+<schueler>
+    <vorname>Max</vorname>
+    <nachname>Muster</nachname>
+    <geburtsdatum>05.07.2002</geburtsdatum>
+    <klasse>4BHITM</klasse>
+</schueler>
+----
+
+Zeichen: **187**
+
+
+| JSON
+[source, json]
+----
+{
+  "schueler": {
+    "vorname": "Max",
+    "nachname": "Muster",
+    "geburtsdatum": "05.07.2022",
+    "klasse": "4BHITM"
+  }
+}
+----
+
+Zeichen: **121**
+|===
+
+JSON ist hier effizienter, da es weniger Zeichen als XML hat.
+
+Ebenfalls ist JSON meistens einfacher zu lesen als XML.
+
+====
+
+==== Endpoint
+
+Ein Endpoint ist eine Schnittstelle für die Daten.
+
+Jeder Endpoint hat eine URL und eine Methode, die dieser verwendet.
+
+image::2022-09-26-rest-examples.png[]
+
+==== Server Architektur
+
+Auf dem Server werden die Anfragen entgegengenommen und verarbeitet. Hierbei kann der Server weitere Verbindungen aufbauen (Datenbank, weitere REST requests, ..), oder Berechnungen durchführen.
+
+Dieser ist mit folgender Architektur aufgebaut:
+
+image::2022-09-26-server-logic.png[]
+
+Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher moderner und vernünftiger als z.B. Java FX.
+
+Daher ist es ebenfalls besonders wichtig, die Daten, die der Client mit einem POST request übermittelt, am Server zu überprüfen, bevor diese gespeichert werden
