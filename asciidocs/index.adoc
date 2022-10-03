@@ -21,11 +21,14 @@ Der Client holt sich die Informationen, die dieser Benötigt vom Server, oder sa
 
 ==== Methoden von REST
 
-Rest hat verschiedene Methoden, die verwendet werden können:
+Rest hat verschiedene Methoden, die sich an CRUD orientieren. +
 
+TIP: CRUD = **C**reate, **R**ead, **U**pdate, **D**elete
+
+* POST (erstellen und speichern)
 * GET (lesen)
-* POST (speichern)
-* PATCH (nur selten verwendet)
+* UPDATE (bereits erstellte Resource updaten)
+* PATCH (einzelne Values einer Resource ändern)
 * DELETE (löschen)
 
 Es gibt noch weitere Methoden, wie z.B OPTIONS.
@@ -130,6 +133,6 @@ Dieser ist mit folgender Architektur aufgebaut:
 
 image::2022-09-26-server-logic.png[]
 
-Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher moderner und vernünftiger als z.B. Java FX.
+Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher, moderner und vernünftiger als z.B. Java FX.
 
 Daher ist es ebenfalls besonders wichtig, die Daten, die der Client mit einem POST request übermittelt, am Server zu überprüfen, bevor diese gespeichert werden
