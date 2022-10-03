@@ -133,3 +133,14 @@ image::2022-09-26-server-logic.png[]
 Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher moderner und vernünftiger als z.B. Java FX.
 
 Daher ist es ebenfalls besonders wichtig, die Daten, die der Client mit einem POST request übermittelt, am Server zu überprüfen, bevor diese gespeichert werden
+
+
+
+== 2022-10-03
+
+=== Bsp REST mit http-Methoden
+
+
+
+
+
