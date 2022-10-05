@@ -25,7 +25,8 @@ Rest hat verschiedene Methoden, die verwendet werden können:
 
 * GET (lesen)
 * POST (speichern)
-* PATCH (nur selten verwendet)
+* PUT (update gesamte Ressource)
+* PATCH (nur einzelne Felder ändern)
 * DELETE (löschen)
 
 Es gibt noch weitere Methoden, wie z.B OPTIONS.
@@ -60,7 +61,7 @@ https://www.example.com/person?vname="hans"&nname="muster"
 
 Beim zweitem Beispiel werden 2 weitere Parameter mitgegeben. +
 nname = hans +
-vanme = muster +
+vname = muster +
 Diese sind einfache Variablen mit Werten.
 
 ====
