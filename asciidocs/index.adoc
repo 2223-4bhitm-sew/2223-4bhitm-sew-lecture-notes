@@ -27,8 +27,9 @@ TIP: CRUD = **C**reate, **R**ead, **U**pdate, **D**elete
 
 * POST (erstellen und speichern)
 * GET (lesen)
-* UPDATE (bereits erstellte Resource updaten)
-* PATCH (einzelne Values einer Resource ändern)
+* POST (speichern)
+* PUT (update gesamte Ressource)
+* PATCH (nur einzelne Felder ändern)
 * DELETE (löschen)
 
 Es gibt noch weitere Methoden, wie z.B OPTIONS.
@@ -63,7 +64,7 @@ https://www.example.com/person?vname="hans"&nname="muster"
 
 Beim zweitem Beispiel werden 2 weitere Parameter mitgegeben. +
 nname = hans +
-vanme = muster +
+vname = muster +
 Diese sind einfache Variablen mit Werten.
 
 ====
@@ -170,5 +171,3 @@ image::2022-10-03-rest-post-request.png[]
 |===
 
 === Restfull API
-
-//TODO: (Peter) add information here

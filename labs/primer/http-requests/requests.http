@@ -1,0 +1,28 @@
+GET http://localhost:8080/person
+
+###
+
+POST http://localhost:8080/person
+Content-Type: application/json
+
+{
+  "firstName": "Susi",
+  "lastName": "Mayr"
+}
+
+###
+
+PATCH http://localhost:8080/person
+Content-Type: text/plain
+
+"Susi"
+
+###
+
+DELETE http://localhost:8080/person
+Content-Type: application/json
+
+{
+"firstName": "Susi",
+"lastName": "Mayr"
+}
