@@ -665,9 +665,10 @@ pre.rouge {
 <li><a href="#_rest">1.2. REST</a></li>
 </ul>
 </li>
-<li><a href="#_2022_10_03">2. 2022-10-03</a>
+<li><a href="#_2022_10_03_rest_rest_in_quarkus">2. 2022-10-03 REST, REST in Quarkus</a>
 <ul class="sectlevel2">
-<li><a href="#_bsp_rest_mit_http_methoden">2.1. Bsp REST mit http-Methoden</a></li>
+<li><a href="#_rest_2">2.1. Rest</a></li>
+<li><a href="#_restfull_api">2.2. Restfull API</a></li>
 </ul>
 </li>
 </ul>
@@ -683,7 +684,7 @@ pre.rouge {
 <div class="sect2">
 <h3 id="_grundproblem"><a class="anchor" href="#_grundproblem"></a>1.1. Grundproblem</h3>
 <div class="paragraph">
-<p>Wir haben mehrere verschiedene Computer, die alle mit unterschiedlicher Hard- und Software arbeiten. Damit diese problemlos miteinander kommunizieren können, gibt es Protokolle. REST ist eines vieler verschiedener Protokollen, die Dieses Problem lösen.</p>
+<p>Wir haben mehrere verschiedene Computer, die alle mit unterschiedlicher Hard- und Software arbeiten. Damit diese problemlos miteinander kommunizieren können, gibt es Protokolle. REST ist eines vieler verschiedener Protokollen, die dieses Problem lösen.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -712,12 +713,27 @@ pre.rouge {
 <p>Der Client holt sich die Informationen, die dieser Benötigt vom Server, oder sagt dem Server, dass er Informationen löschen oder speichern soll.</p>
 </div>
 <div class="sect3">
-<h4 id="_methoden_von_rest"><a class="anchor" href="#_methoden_von_rest"></a>1.2.1. Methoden von REST</h4>
+<h4 id="rest_methoden"><a class="anchor" href="#rest_methoden"></a>1.2.1. Methoden von REST</h4>
 <div class="paragraph">
-<p>Rest hat verschiedene Methoden, die verwendet werden können:</p>
+<p>Rest hat verschiedene Methoden, die sich an CRUD orientieren.<br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+CRUD = <strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate, <strong>D</strong>elete
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>POST (erstellen und speichern)</p>
+</li>
 <li>
 <p>GET (lesen)</p>
 </li>
@@ -884,7 +900,7 @@ Diese sind einfache Variablen mit Werten.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher moderner und vernünftiger als z.B. Java FX.</p>
+<p>Bei klassischen Anwendungen (die wir vor allem in den letzten Jahren programmiert haben), hatte sich die Anwendung direkt mit der Datenbank verbunden. Dies ist allerdings aus Sicherheitsgründen schlecht. Ebenfalls sind Webapps einfacher, moderner und vernünftiger als z.B. Java FX.</p>
 </div>
 <div class="paragraph">
 <p>Daher ist es ebenfalls besonders wichtig, die Daten, die der Client mit einem POST request übermittelt, am Server zu überprüfen, bevor diese gespeichert werden</p>
@@ -894,10 +910,69 @@ Diese sind einfache Variablen mit Werten.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_2022_10_03"><a class="anchor" href="#_2022_10_03"></a>2. 2022-10-03</h2>
+<h2 id="_2022_10_03_rest_rest_in_quarkus"><a class="anchor" href="#_2022_10_03_rest_rest_in_quarkus"></a>2. 2022-10-03 REST, REST in Quarkus</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Beitrag: Peter Klose &amp; Thomas Spindler</p>
+</div>
 <div class="sect2">
-<h3 id="_bsp_rest_mit_http_methoden"><a class="anchor" href="#_bsp_rest_mit_http_methoden"></a>2.1. Bsp REST mit http-Methoden</h3>
+<h3 id="_rest_2"><a class="anchor" href="#_rest_2"></a>2.1. Rest</h3>
+<div class="paragraph">
+<p>Rest ist <strong>Zustandslos</strong>, das heißt, dass es grundsätzlich keine Sessions gibt. Dies bedeutet aber auch, dass Anmeldeinformationen, oder weitere Tokens und Cookies bei jeder Anfrage erneut gesendet werden müssen.</p>
+</div>
+<div class="sect3">
+<h4 id="_rest_request"><a class="anchor" href="#_rest_request"></a>2.1.1. Rest Request</h4>
+<div class="paragraph">
+<p>Ein Rest-Request ist, wenn der Client etwas vom Server anfordert. Dies muss den <a href="#rest_methoden">REST Methoden</a> entsprechen.</p>
+</div>
+<div class="sect4">
+<h5 id="_beispiel_get"><a class="anchor" href="#_beispiel_get"></a>Beispiel GET</h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/2022-10-03-rest-request.png" alt="2022 10 03 rest request">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_beispiel_post"><a class="anchor" href="#_beispiel_post"></a>Beispiel POST</h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/2022-10-03-rest-post-request.png" alt="2022 10 03 rest post request">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rest_begriffe"><a class="anchor" href="#_rest_begriffe"></a>2.1.2. Rest Begriffe</h4>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Safety: Daten werden nicht verändert</p>
+</li>
+<li>
+<p>Idempotence: Die Ressource behält auch nach mehrmaligen Aufruf den gleichen Zustand</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="images/2022-10-03-rest-begriffe.png" alt="2022 10 03 rest begriffe">
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_restfull_api"><a class="anchor" href="#_restfull_api"></a>2.2. Restfull API</h3>
 
 </div>
 </div>
@@ -905,7 +980,7 @@ Diese sind einfache Variablen mit Werten.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-05 16:43:42 UTC
+Last updated 2022-10-10 11:53:29 UTC
 </div>
 </div>
 </body>
