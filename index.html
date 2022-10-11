@@ -668,9 +668,11 @@ pre.rouge {
 <li><a href="#_2022_10_03_rest_rest_in_quarkus">2. 2022-10-03 REST, REST in Quarkus</a>
 <ul class="sectlevel2">
 <li><a href="#_rest_2">2.1. Rest</a></li>
-<li><a href="#_restfull_api">2.2. Restfull API</a></li>
+<li><a href="#_restfullapi">2.2. RestfullAPI</a></li>
+<li><a href="#_jpa">2.3. JPA</a></li>
 </ul>
 </li>
+<li><a href="#_2022_10_17_tabellenbeziehungen_in_jpa">3. 2022-10-17 Tabellenbeziehungen in JPA</a></li>
 </ul>
 </div>
 </div>
@@ -972,15 +974,270 @@ Diese sind einfache Variablen mit Werten.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_restfull_api"><a class="anchor" href="#_restfull_api"></a>2.2. Restfull API</h3>
-
+<h3 id="_restfullapi"><a class="anchor" href="#_restfullapi"></a>2.2. RestfullAPI</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>JSON-B</p>
+</li>
+<li>
+<p>JSON-P</p>
+</li>
+<li>
+<p>application.properties</p>
+</li>
+<li>
+<p>dev-console</p>
+</li>
+</ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_jpa"><a class="anchor" href="#_jpa"></a>2.3. JPA</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Persistence</p>
+<div class="ulist">
+<ul>
+<li>
+<p>dauerhaft speichern</p>
+</li>
+<li>
+<p>die Daten überleben den Prozess, der sie erstellt hat.</p>
+</li>
+<li>
+<p>Bsp: File, DB, ev. Serialisierung (ist auch File)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>transient</p>
+<div class="ulist">
+<ul>
+<li>
+<p>flüchtig</p>
+</li>
+<li>
+<p>die Daten werden mit dem Prozess, der sie erstellt hat, gelöscht</p>
+</li>
+<li>
+<p>zB Variablen im Programm</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_quarkus_profiles"><a class="anchor" href="#_quarkus_profiles"></a>2.3.1. Quarkus Profiles</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Quarkus hat per default drei Profile:</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>dev</p>
+</li>
+<li>
+<p>prod</p>
+</li>
+<li>
+<p>test</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Die Profile haben den Vorteil verschieden Konfigurationen bei unterschiedlichen Anwendungfällen zur Verfügung zu stellen. ZB wir eine eigen Datenbank zum testen verwendet</p>
+</li>
+<li>
+<p>man erkennt das jeweilige Profile in der <code>application.properties</code> durch den Prefix %prod, %test, %dev</p>
+</li>
+<li>
+<p>dev</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ist development modus</p>
+</li>
+<li>
+<p>automatisches hot reloading, wenn Code geändert wird</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>test</p>
+<div class="ulist">
+<ul>
+<li>
+<p>wird zum Testen verwendet</p>
+</li>
+<li>
+<p>meist wird eine eigen Testdatenbank gestartet</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>prod</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ist optimierter (zB startet schneller)</p>
+</li>
+<li>
+<p>hat dafür keine dev-Console, keinen Swagger (nicht automatisch) usw.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_was_muss_man_tun_um_eine_entity_klasse_zu_persistieren"><a class="anchor" href="#_was_muss_man_tun_um_eine_entity_klasse_zu_persistieren"></a>2.3.2. Was muss man tun, um eine Entity-Klasse zu persistieren?</h4>
+<div class="sect4">
+<h5 id="_dependencies_in_pom_xml_eintragen"><a class="anchor" href="#_dependencies_in_pom_xml_eintragen"></a>Dependencies in pom.xml eintragen</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>JDBC-Treiber der Datenbank</p>
+</li>
+<li>
+<p>der OR-Mapper (Object Relational Mapper, ORM)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>in Quarkus wird standardmäßig <strong>Hibernate</strong> verwendet.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_db_credentials_in_application_properties_eintragen"><a class="anchor" href="#_db_credentials_in_application_properties_eintragen"></a>DB-Credentials in application.properties eintragen</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="properties"><span class="py">quarkus.datasource.username</span><span class="p">=</span><span class="s">postgres</span>
+<span class="py">quarkus.datasource.password</span><span class="p">=</span><span class="s">postgres</span>
+<span class="py">quarkus.datasource.db-kind</span><span class="p">=</span><span class="s">postgresql</span>
+<span class="py">quarkus.hibernate-orm.database.generation</span><span class="p">=</span><span class="s">drop-and-create</span>
+<span class="py">quarkus.datasource.jdbc.url</span><span class="p">=</span><span class="s">jdbc:postgresql://localhost:5432/db</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_datenbank_starten"><a class="anchor" href="#_datenbank_starten"></a>Datenbank starten</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="shell">docker run <span class="nt">--rm</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+           <span class="nt">--name</span> postgres-payment <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">POSTGRES_USER</span><span class="o">=</span>postgres <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">POSTGRES_DB</span><span class="o">=</span>db <span class="se">\</span>
+           <span class="nt">-v</span> <span class="k">${</span><span class="nv">PWD</span><span class="k">}</span>/db-postgres/db:/var/lib/postgresql/data <span class="se">\</span>
+           <span class="nt">-p</span> 5432:5432 <span class="se">\</span>
+           postgres:13.3-alpine</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_erstellen_einer_entity_klasse"><a class="anchor" href="#_erstellen_einer_entity_klasse"></a>Erstellen einer Entity-Klasse</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Entity</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"MY_PERSON"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+
+    <span class="nd">@Id</span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>  <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"P_ID"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"P_FIRST_NAME"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">firstName</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"P_LAST_NAME"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">lastName</span><span class="o">;</span>
+
+    <span class="c1">// constructors omitted for brevity</span>
+
+    <span class="c1">// getter and setter omitted for brevity</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Annotation @Entity wird benötigt</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Eine Id wird benötigt &#8594; @Id</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Hier wird ein Autowert-Feld in der DB erstellt
+&lt;.&gt;</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_zugriff_auf_die_db_über_den_entity_manager"><a class="anchor" href="#_zugriff_auf_die_db_über_den_entity_manager"></a>Zugriff auf die DB über den Entity Manager</h5>
+<div class="listingblock">
+<div class="title">Injizieren des EntityManagers</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Inject</span>
+<span class="nc">EntityManager</span> <span class="n">em</span><span class="o">;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_verwenden_einer_transaktion_für_schreibende_zugriffe"><a class="anchor" href="#_verwenden_einer_transaktion_für_schreibende_zugriffe"></a>Verwenden einer Transaktion für schreibende Zugriffe</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Lesende Zugriffe benötigen keine Transaktion</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Transactional</span>
+<span class="kt">void</span> <span class="nf">foo</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="c1">// Speichern in DB</span>
+    <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Mickey"</span><span class="o">,</span> <span class="s">"Mouse"</span><span class="o">));</span>
+
+    <span class="c1">// Holen aus DB</span>
+    <span class="nc">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="nc">Person</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="mi">1L</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getFirstName</span><span class="o">());</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2022_10_17_tabellenbeziehungen_in_jpa"><a class="anchor" href="#_2022_10_17_tabellenbeziehungen_in_jpa"></a>3. 2022-10-17 Tabellenbeziehungen in JPA</h2>
+<div class="sectionbody">
+
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-10 11:53:29 UTC
+Last updated 2022-10-11 05:50:02 UTC
 </div>
 </div>
 </body>
