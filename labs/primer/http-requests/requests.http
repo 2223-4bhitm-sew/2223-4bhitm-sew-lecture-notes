@@ -2,7 +2,7 @@ GET http://localhost:8080/person
 
 ###
 
-POST http://localhost:8080/person
+POST http://localhost:8080/api/person
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 PATCH http://localhost:8080/person
 Content-Type: text/plain
 
-"Susi"
+Susi
 
 ###
 

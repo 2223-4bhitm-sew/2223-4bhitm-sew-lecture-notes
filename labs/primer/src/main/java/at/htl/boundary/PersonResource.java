@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Path("/person")
 public class PersonResource {
@@ -38,16 +39,21 @@ public class PersonResource {
 
         logger.info(persons);
         logger.info(firstName);
-//        Person foundPerson = persons
-//                .stream()
-//                .filter(fn -> fn.getFirstName().equals(firstName))
-//                .findFirst()
-//                .orElse(null);
-        Person foundPerson = persons.get(0);
-        assert foundPerson != null;
+        Person foundPerson = persons
+                .stream()
+                .filter(fn -> fn.getFirstName().equals(firstName))
+                .findFirst()
+                .get();
+        logger.info(foundPerson.getFirstName());
+        //Person foundPerson = persons.get(0);
+        //assert foundPerson != null;
         foundPerson.setFirstName("updated");
-        logger.info(persons);
-        return Response.ok().build();
+//        if (foundPerson.isEmpty()) {
+//            logger.info("is empty");
+//        } else {
+//            logger.info("is not empty");
+//        }
+        return Response.ok(foundPerson).build();
     }
 
     @DELETE

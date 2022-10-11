@@ -1,4 +1,5 @@
 = Lecture Notes 22/23 - 4bhitm - SEW
+:icons: font
 :toc: left
 ifndef::imagesdir[:imagesdir: images]
 
@@ -170,4 +171,145 @@ image::2022-10-03-rest-post-request.png[]
 
 |===
 
-=== Restfull API
+=== RestfullAPI
+
+* JSON-B
+* JSON-P
+* application.properties
+* dev-console
+
+=== JPA
+
+* Persistence
+** dauerhaft speichern
+** die Daten überleben den Prozess, der sie erstellt hat.
+** Bsp: File, DB, ev. Serialisierung (ist auch File)
+* transient
+** flüchtig
+** die Daten werden mit dem Prozess, der sie erstellt hat, gelöscht
+** zB Variablen im Programm
+
+
+
+==== Quarkus Profiles
+
+* Quarkus hat per default drei Profile:
+. dev
+. prod
+. test
+
+* Die Profile haben den Vorteil verschieden Konfigurationen bei unterschiedlichen Anwendungfällen zur Verfügung zu stellen. ZB wir eine eigen Datenbank zum testen verwendet
+* man erkennt das jeweilige Profile in der `application.properties` durch den Prefix %prod, %test, %dev
+
+* dev
+** Ist development modus
+** automatisches hot reloading, wenn Code geändert wird
+* test
+** wird zum Testen verwendet
+** meist wird eine eigen Testdatenbank gestartet
+* prod
+** Ist optimierter (zB startet schneller)
+** hat dafür keine dev-Console, keinen Swagger (nicht automatisch) usw.
+
+
+==== Was muss man tun, um eine Entity-Klasse zu persistieren?
+
+===== Dependencies in pom.xml eintragen
+
+* JDBC-Treiber der Datenbank
+* der OR-Mapper (Object Relational Mapper, ORM)
+** in Quarkus wird standardmäßig *Hibernate* verwendet.
+
+
+===== DB-Credentials in application.properties eintragen
+
+[source,properties]
+----
+quarkus.datasource.username=postgres
+quarkus.datasource.password=postgres
+quarkus.datasource.db-kind=postgresql
+quarkus.hibernate-orm.database.generation=drop-and-create
+quarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/db
+----
+
+===== Datenbank starten
+
+[source,shell]
+----
+docker run --rm=true \
+           --name postgres-payment \
+           -e POSTGRES_USER=postgres \
+           -e POSTGRES_PASSWORD=postgres \
+           -e POSTGRES_DB=db \
+           -v ${PWD}/db-postgres/db:/var/lib/postgresql/data \
+           -p 5432:5432 \
+           postgres:13.3-alpine
+----
+
+===== Erstellen einer Entity-Klasse
+
+
+
+
+[source,java]
+----
+@Entity // <.>
+@Table(name = "MY_PERSON")
+public class Person {
+
+    @Id // <.>
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // <.>
+    @Column(name = "P_ID")
+    private Long id;
+
+    @Column(name = "P_FIRST_NAME")
+    private String firstName;
+
+    @Column(name="P_LAST_NAME")
+    private String lastName;
+
+    // constructors omitted for brevity
+
+    // getter and setter omitted for brevity
+}
+----
+
+<.> Annotation @Entity wird benötigt
+<.> Eine Id wird benötigt -> @Id
+<.> Hier wird ein Autowert-Feld in der DB erstellt
+<.>
+
+
+===== Zugriff auf die DB über den Entity Manager
+
+.Injizieren des EntityManagers
+[source,java]
+----
+@Inject
+EntityManager em;
+----
+
+
+===== Verwenden einer Transaktion für schreibende Zugriffe
+
+* Lesende Zugriffe benötigen keine Transaktion
+
+[source,java]
+----
+@Transactional
+void foo() {
+
+    // Speichern in DB
+    em.persist(new Person("Mickey", "Mouse"));
+
+    // Holen aus DB
+    Person p = em.find(Person.class, 1L);
+    System.out.println(p.getFirstName());
+}
+----
+
+
+
+== 2022-10-17 Tabellenbeziehungen in JPA
+
+
