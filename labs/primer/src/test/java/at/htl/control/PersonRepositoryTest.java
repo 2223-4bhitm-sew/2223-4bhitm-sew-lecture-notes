@@ -14,15 +14,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonRepositoryTest {
 
     @Inject
-    EntityManager em;
+    PersonRepository personRepository;
 
     @Transactional
     @Test
     void createPerson() {
 
-        em.persist(new Person("Mickey", "Mouse"));
+        personRepository.save(new Person("Minnie", "Mouse"));
 
-        Person p = em.find(Person.class, 1L);
-        System.out.println(p.getFirstName());
+        //Person p = em.find(Person.class, 1L);
+        //System.out.println(p.getFirstName());
     }
 }

@@ -312,4 +312,136 @@ void foo() {
 
 == 2022-10-17 Tabellenbeziehungen in JPA
 
+* transient
+* persistent
+
+=== Modi von Datenbanken
+* *Network*: Datenbank und Java Programm laufen in getrennten JVMs
+* *Embedded*: Datenbank und Java Programm laufen in derselben JVM
+* *InMemory*:
+** Die Datenbank läuft im Hauptspeicher
+** besonders gut geeignet für Testen, da sehr schnell
+
+
+=== Beziehungen zwischen Entities
+
+
+|===
+|Beziehung |Beschreibung | Bsp
+
+|Assoziation
+|zwei unterschiedliche Entites haben eine Beziehung
+|ein Auto hat ein Kennzeichen (oder mehrere im Zeitablauf)
+
+|Aggregation
+|Ein Objekt besteht aus anderen Objekten
+|zB Auto hat 4 Räder
+
+|Komposition
+|Ein Object besteht aus anderen Objekten. Diese können nicht zerstörungsfrei zerlegt werden.
+|Ein Haus hat mehrere Etagen
+
+|Vererbung
+|Ein Objekt erbt von einem anderen dessen Eigenschaften
+|Ein Pkw ist ein Kfz und erbt dess Attribute
+|===
+
+
+=== Mikroprojekte
+
+.Mikroprojekt-Einteilung
+[%collapsible]
+====
+|===
+|Name |Thema
+
+|Thaller David
+|Gebäudeverwaltung (wo sind welche Geräte installiert zB Chromecasts)
+
+|Klose Peter
+|Linienbusunternehmen inkl. Fahrplan
+
+|Schatzberger Oliver
+|Supermarkt
+
+|Eder Moritz
+|Teehändler
+
+|Hager Sebastian
+|Friedhofsverwaltung
+
+|Al Sabagh Abdulrahman
+|Gärtnerei
+
+|Reiter Lydia
+|Tanzverein
+
+|Spindler Thomas
+|Rezeptseite
+
+|Horner Paul
+|Hotel
+
+|Weinhäupl Valentin
+|Fussballverein
+
+|Lummerstorfer Lukas
+|Tennisverein
+
+|Just Elias
+|Stadtrundfahrten
+
+|Angerer Mona
+|Too good to go - App - Clone
+
+|===
+
+====
+
+
+=== Aufgabe 1 - Mikroprojekt
+
+* Erstellen eines Quarkus-Projekts
+** Das Quarkus Projekt ist in einem Ordner `backend`.
+** Es gibt einen Ordner `asciidocs` entsprechend dem https://github.com/htl-leonding-college/asciidoctor-convert-template[Repo^]
+** Später wird noch ein `frontend`-Projekt hinzugefügt
+
+* git
+** Es sind genügend aussagekräftige Commits zu erstellen
+** Beim Entwickeln ist jeweils in einem feature-Branch zu entwickeln und dann in den main-Branch zu mergen.
+
+* Es sind Tests zu verwenden
+** Dabei sind primäre assertj-core und assertj-db zu verwenden.
+
+* Es ist ein Datenmodell zu erstellen (max. 5 Tabellen)
+** als plantuml-Diagramm in der Dokumentation angeben
+** dann melden -> Korrektur
+
+*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
