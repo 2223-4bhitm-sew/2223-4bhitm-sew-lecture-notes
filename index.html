@@ -680,6 +680,14 @@ pre.rouge {
 <li><a href="#_aufgabe_1_mikroprojekt">3.4. Aufgabe 1 - Mikroprojekt</a></li>
 </ul>
 </li>
+<li><a href="#_2022_11_07">4. 2022-11-07</a>
+<ul class="sectlevel2">
+<li><a href="#_context_dependency_injection_cdi">4.1. Context &amp; Dependency Injection - CDI</a></li>
+<li><a href="#_devservices_mit_testcontainers">4.2. DevServices mit Testcontainers</a></li>
+<li><a href="#_logging">4.3. Logging</a></li>
+<li><a href="#_übung_erstellen_eines_endpoints_für_die_crud_funktionalität_einer_entität">4.4. Übung: Erstellen eines Endpoints für die CRUD-Funktionalität einer Entität</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1447,16 +1455,109 @@ Diese sind einfache Variablen mit Werten.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>*</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_2022_11_07"><a class="anchor" href="#_2022_11_07"></a>4. 2022-11-07</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_context_dependency_injection_cdi"><a class="anchor" href="#_context_dependency_injection_cdi"></a>4.1. Context &amp; Dependency Injection - CDI</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Es gibt 3 Arten um Objekte zu erhalten:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>mit new und Constructor</p>
+</li>
+<li>
+<p>mittels einer Fabrik-Methode</p>
+</li>
+<li>
+<p>dependency injection &#8594; ein übergeordneter Container hält Objekte vor (in einem Pool). Mit der Annotation @Inject werden diese Objekte einer Refernzvariablen zugewiesen</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_devservices_mit_testcontainers"><a class="anchor" href="#_devservices_mit_testcontainers"></a>4.2. DevServices mit Testcontainers</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.testcontainers.org/" class="bare">https://www.testcontainers.org/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logging"><a class="anchor" href="#_logging"></a>4.3. Logging</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Logging-Levels</p>
+<div class="ulist">
+<ul>
+<li>
+<p>INFO</p>
+</li>
+<li>
+<p>DEBUG</p>
+</li>
+<li>
+<p>TRACE</p>
+</li>
+<li>
+<p>ERROR</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>rolierendes Logging</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bsp</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Es gibt 3 Logfiles</p>
+</li>
+<li>
+<p>Die Logs werden in ein File geschrieben. Ist dieses File 10kB groß, wird in das nächste File geschrieben. Anschließend in das dritte File.</p>
+</li>
+<li>
+<p>Erreicht auch das dritte File die Größe von 10kB, dann wird das erste File gelöscht und neu beschrieben.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/persistieren-mit-jpa.png" alt="persistieren mit jpa">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_übung_erstellen_eines_endpoints_für_die_crud_funktionalität_einer_entität"><a class="anchor" href="#_übung_erstellen_eines_endpoints_für_die_crud_funktionalität_einer_entität"></a>4.4. Übung: Erstellen eines Endpoints für die CRUD-Funktionalität einer Entität</h3>
+
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-11-07 13:29:43 UTC
+Last updated 2022-11-07 15:30:54 UTC
 </div>
 </div>
 </body>
