@@ -28,7 +28,6 @@ TIP: CRUD = **C**reate, **R**ead, **U**pdate, **D**elete
 
 * POST (erstellen und speichern)
 * GET (lesen)
-* POST (speichern)
 * PUT (update gesamte Ressource)
 * PATCH (nur einzelne Felder ändern)
 * DELETE (löschen)
@@ -344,6 +343,10 @@ void foo() {
 |Vererbung
 |Ein Objekt erbt von einem anderen dessen Eigenschaften
 |Ein Pkw ist ein Kfz und erbt dess Attribute
+
+|Realisierung
+|(Implementierung)
+|Serializable - Interface
 |===
 
 
