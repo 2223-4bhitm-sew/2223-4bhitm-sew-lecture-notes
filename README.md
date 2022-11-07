@@ -1,5 +1,10 @@
 # 2223-4bhitm-sew-lecture-notes
 
+- https://github.com/2223-4bhitm-sew/2223-4bhitm-sew-lecture-notes
+- https://2223-4bhitm-sew.github.io/2223-4bhitm-sew-lecture-notes/
+
+
+
 ## Converting
 
 ![](./img/conver_strategy.jpg)
