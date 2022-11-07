@@ -3,6 +3,16 @@ package at.htl.entity;
 
 import javax.persistence.*;
 
+@NamedQueries({
+        @NamedQuery(
+                name = "Person.findAll",
+                query = "select p from Person p"
+        ),
+        @NamedQuery(
+                name = "Person.findByFirstNameAndLastName",
+                query="select p from Person p where p.firstName like :FIRST and p.lastName like :LAST"
+        )
+})
 @Entity
 @Table(name = "MY_PERSON")
 public class Person {

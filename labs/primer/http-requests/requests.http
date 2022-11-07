@@ -1,6 +1,11 @@
-GET http://localhost:8080/person
+GET http://localhost:8080/api/person
 
 ###
+
+GET http://localhost:8080/api/person/firstlast?first=Susi&last=Mayr
+
+###
+
 
 POST http://localhost:8080/api/person
 Content-Type: application/json

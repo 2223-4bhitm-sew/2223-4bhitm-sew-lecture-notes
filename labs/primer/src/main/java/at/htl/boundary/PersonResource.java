@@ -1,12 +1,17 @@
 package at.htl.boundary;
 
+import at.htl.control.PersonRepository;
 import at.htl.entity.Person;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
+import javax.transaction.TransactionManager;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
+import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -17,19 +22,55 @@ public class PersonResource {
     @Inject
     Logger logger;
 
+    @Inject
+    PersonRepository personRepository;
+
     private List<Person> persons = new LinkedList<>();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Person> findAll() {
-        return persons;
+        return personRepository.findAll();
     }
 
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Person findById(
+            @PathParam("id") long id
+    ) {
+        logger.info(id);
+        return personRepository.findById(id);
+    }
+
+    @GET
+    @Path("firstlast")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Person> findById(
+            @QueryParam("first") String firstName,
+            @QueryParam("last") String lastName
+    ) {
+        logger.info(lastName + " " + firstName);
+        return personRepository.findByFirstnameAndLastname(
+                firstName,
+                lastName
+        );
+    }
+
+
+
     @POST
+    @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(Person person) {
-        persons.add(person);
-        return Response.created(null).build();
+    public Response create(Person person, @Context UriInfo uriInfo) throws Exception {
+        //persons.add(person);
+        Person saved = personRepository.save(person);
+        logger.info(person.getLastName() + " wird gespeichert");
+        URI location = uriInfo
+                .getAbsolutePathBuilder()
+                .path(saved.getId().toString())
+                .build();
+        return Response.created(location).build();
     }
 
     @PATCH
