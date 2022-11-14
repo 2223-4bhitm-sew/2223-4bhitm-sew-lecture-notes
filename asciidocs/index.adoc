@@ -454,13 +454,40 @@ image::persistieren-mit-jpa.png[]
 === Übung: Erstellen eines Endpoints für die CRUD-Funktionalität einer Entität
 
 
+== 2022-11-14
+
+=== Strategie zum Erzeugen von Id's
+
+==== TABLE
+
+* Es wird eine Tabelle erstellt.
+* Diese Tabelle hat nur eine Spalte ID und eine Zeile
+* Der Wert ID wird immer inkrementiert
+* Alle Tables holen sich den nächsten Wert aus dieser Table
+
+* Variante:
+** Die Tabelle hat 2 Spalten: TABLE und ID
+** ZB TABLE Person hat die ID 500
+** zB TABLE Rechnung hat die ID 2378
+** Dadurch können die Tables jeweils mit einer durchgehenden Folge von Zahlen versehen werden
 
 
+==== IDENTITY
+
+Spaltentyp AUTOWERT -> die Spalte zählt automatisch hoch. Muss im INSERT nicht angeführt werden
+
+==== SEQUENCE
+
+* Es wird ein Sequence Objekt erstellt
+* Der aktuelle Wert der Sequence wird automatisch in die Id-spalte eingetragen
 
 
+=== Panache
+
+* https://github.com/2223-4bhitm-sew/panache-demo-4bhitm[panache-demo-4bhitm^]
 
 
-
+* https://phauer.com/2016/testing-restful-services-java-best-practices/
 
 
 
