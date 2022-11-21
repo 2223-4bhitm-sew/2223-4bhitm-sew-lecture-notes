@@ -32,7 +32,7 @@ TIP: CRUD = **C**reate, **R**ead, **U**pdate, **D**elete
 * PATCH (nur einzelne Felder ändern)
 * DELETE (löschen)
 
-Es gibt noch weitere Methoden, wie z.B OPTIONS.
+Es gibt noch weitere Methoden, wie z.B. OPTIONS.
 
 ==== URL
 
@@ -40,7 +40,7 @@ Um die richtigen Resource vom Server zu bekommen, wird eine URL verwendet.
 
 TIP: URL  = Unified Resource Locator
 
-Wie der Name schon sagt, dient eine URL dazu, dass sie den Pfad der Resource angibt. Dies ist vergleichbar mit Dateipfaden.
+Wie der Name schon sagt, dient eine URL dazu, dass sie den Pfad der Ressource angibt. Dies ist vergleichbar mit Dateipfaden.
 
 .Beispiele für URLs
 [%collapsible]
@@ -63,8 +63,8 @@ https://www.example.com/person?vname="hans"&nname="muster"
 ----
 
 Beim zweitem Beispiel werden 2 weitere Parameter mitgegeben. +
-nname = hans +
-vname = muster +
+vname = hans +
+nname = muster +
 Diese sind einfache Variablen mit Werten.
 
 ====
@@ -427,7 +427,7 @@ void foo() {
 * Es gibt 3 Arten um Objekte zu erhalten:
 ** mit new und Constructor
 ** mittels einer Fabrik-Methode
-** dependency injection -> ein übergeordneter Container hält Objekte vor (in einem Pool). Mit der Annotation @Inject werden diese Objekte einer Refernzvariablen zugewiesen
+** dependency injection -> ein übergeordneter Container hält Objekte vor (in einem Pool). Mit der Annotation @Inject werden diese Objekte einer Referenzvariablen zugewiesen
 
 
 === DevServices mit Testcontainers
@@ -442,7 +442,7 @@ void foo() {
 ** TRACE
 ** ERROR
 
-* rolierendes Logging
+* rollierendes Logging
 ** Bsp
 *** Es gibt 3 Logfiles
 *** Die Logs werden in ein File geschrieben. Ist dieses File 10kB groß, wird in das nächste File geschrieben. Anschließend in das dritte File.
