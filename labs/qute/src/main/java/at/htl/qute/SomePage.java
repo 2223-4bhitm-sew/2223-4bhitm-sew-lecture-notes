@@ -14,10 +14,6 @@ import static java.util.Objects.requireNonNull;
 @Path("/some-page")
 public class SomePage {
 
-    @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance page(String name);
-    }
 
     @GET
     @Produces(MediaType.TEXT_HTML)
