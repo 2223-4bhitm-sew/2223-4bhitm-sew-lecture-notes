@@ -511,4 +511,26 @@ image::aggregate-pattern.png[]
 
 
 
+== 2023-01-23
+
+=== Verbesserung ITP Test
+
+image::2023-01-23-itp-test-cld-correction.png[]
+
+=== MOB Programming
+
+Es ist ein System zu implementieren, welches uns ermöglicht Autos und Personen zu speichern.
+Ein Auto soll dabei nur einer Person zugeordnet werden.
+Eine Person kann mehrere Autos besitzen.
+
+* Daten von: https://www.mockaroo.com/[Mockaroo^]
+* Quarkus Projekt:
+** Hibernate ORM with Panach
+** RESTEasy Classic Jackson
+** RESTEasy Classic Qute
+** JDBC Driver - PostgreSQL
+** SmallRye OpenAPI
+** SmallRye GraphQL
+* Datenbank Postgres
+** http://edufs.edu.htl-leonding.ac.at/~t.stuetz/download/nvs/scripts/postgres/[download-script^]
 
