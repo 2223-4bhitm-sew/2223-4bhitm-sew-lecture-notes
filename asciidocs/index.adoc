@@ -534,3 +534,23 @@ Eine Person kann mehrere Autos besitzen.
 * Datenbank Postgres
 ** http://edufs.edu.htl-leonding.ac.at/~t.stuetz/download/nvs/scripts/postgres/[download-script^]
 
+== 2023-01-31
+
+* https://medium.com/sahibinden-technology/package-by-layer-vs-package-by-feature-7e89cde2ae3a[Package by Layer vs Package by Feature^]
+
+* https://github.com/quarkus-seminar/quarkus-with-db-on-leocloud-tutorial
+
+
+== 2023-02-06
+
+=== Übung Keycloak
+
+* in einem Docker-Container wird ein Keycloak gehostet
+* Die Konfiguration soll in einem config-File in einem bind mount - Volume enthalten (Welche Möglichkeiten gibt es?)
+
+
+
+
+
+
+
