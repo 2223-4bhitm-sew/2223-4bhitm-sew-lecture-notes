@@ -170,7 +170,7 @@ image::2022-10-03-rest-post-request.png[]
 
 |===
 
-=== RestfullAPI
+=== RestfulAPI
 
 * JSON-B
 * JSON-P
@@ -548,9 +548,13 @@ Eine Person kann mehrere Autos besitzen.
 * in einem Docker-Container wird ein Keycloak gehostet
 * Die Konfiguration soll in einem config-File in einem bind mount - Volume enthalten (Welche Möglichkeiten gibt es?)
 
+----
+npm install @angular/cli
 
+npx ng new demo #<.>
+----
 
-
+<.> npx ... das Kommando wir lokal
 
 
 
