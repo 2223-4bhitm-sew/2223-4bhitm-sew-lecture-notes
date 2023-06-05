@@ -606,7 +606,7 @@ entity MQ_CATEGORY {
   --
   * c_name: varchar(50)
   * c_descr: varchar(255)
-  * c_send_to_mqtt: varchar(255)
+  * c_send_to_mqtt: boolean
 }
 
 entity MQ_VALUE {
