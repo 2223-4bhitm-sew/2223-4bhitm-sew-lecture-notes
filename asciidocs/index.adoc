@@ -557,4 +557,77 @@ npx ng new demo #<.>
 <.> npx ... das Kommando wir lokal
 
 
+== 2023-06-05
+
+=== Übung MQTT-Client
+
+* Erstellen Sie einen MQTT-Client mit Quarkus mit folgender Funktionalität
+** In einer Datenbank sind Werte nach Kategorien gespeichert (Schreiben Sie hierzu einen Data Faker)
+*** Verwenden Sie hierbei optimistisches Locking
+** In einer Tabelle ist gespeichert, welche Kategorien auf den mqtt-Server gesendet werden
+** Mittels REST-Request können Kategorien aktiviert oder deaktiviert werden, dh sie werden an den mqtt-Server gesendet oder nicht
+** Bitte verwenden Sie folgende topic-Struktur
++
+----
+/labs/2223/4bhitm/lab07/nachname
+----
+
+.CLD
+[plantuml,lab07-cld,png]
+----
+@startuml
+class Category {
+  id: Long
+  name: String
+  descr: String
+  sendToMqtt: boolean
+}
+
+
+class Value {
+  id: Long
+  name: String
+  unit: String
+  value: Double
+  category: Category
+}
+
+Category "1" <-- "*" Value: is category of <
+@enduml
+----
+
+.ERD
+[plantuml, lab07-erd,png]
+----
+@startuml
+!theme plain
+entity MQ_CATEGORY {
+  * c_id: number(7,0)
+  --
+  * c_name: varchar(50)
+  * c_descr: varchar(255)
+  * c_send_to_mqtt: varchar(255)
+}
+
+entity MQ_VALUE {
+  * v_id: number(7,0)
+  --
+  * v_name: varchar(50)
+  * v_unit: varchar(255)
+  * v_value: number(7,2)
+  * v_c_id: number(7,0)
+}
+
+MQ_VALUE }|..||MQ_CATEGORY
+
+@enduml
+----
+
+++++
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dTTfygU61_E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+++++
+
+https://www.google.com/search?client=firefox-b-d&q=quarkus+mqtt
+
+
 
